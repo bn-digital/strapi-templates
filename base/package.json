@@ -5,24 +5,25 @@
   "description": "A Strapi-driven admin panel",
   "scripts": {
     "build": "strapi build",
-    "deploy": "strapi deploy",
-    "develop": "strapi develop",
-    "start": "strapi start",
-    "strapi": "strapi"
+    "generate-types": "strapi ts:generate-types",
+    "develop": "strapi develop"
   },
   "dependencies": {
     "@strapi/plugin-users-permissions": "5.4.0",
+    "@strapi/plugin-graphql": "5.4.0",
     "@strapi/strapi": "5.4.0",
     "better-sqlite3": "11.3.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0"
+    "styled-components": "^6.0.0",
+    "nexus": "^1.3.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+
     "typescript": "^5"
   },
   "engines": {

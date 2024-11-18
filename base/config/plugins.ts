@@ -1,1 +1,7 @@
-export default () => ({});
+export default () => {
+    return {
+        graphql: {
+            enabled: true
+        }
+    }
+}
