@@ -1,4 +1,6 @@
-// import type { Core } from '@strapi/strapi';
+ import type { Core } from '@strapi/strapi';
+ import {extendSchema} from "./graphql";
+ import {appSettings} from "./hooks";
 
 export default {
   /**
@@ -7,14 +9,15 @@ export default {
    *
    * This gives you an opportunity to extend code.
    */
-  register(/* { strapi }: { strapi: Core.Strapi } */) {},
+  register( { strapi }: { strapi: Core.Strapi } ) {
+    strapi.config.set("app", appSettings);
+    extendSchema(strapi);
+  },
 
-  /**
-   * An asynchronous bootstrap function that runs before
-   * your application gets started.
-   *
-   * This gives you an opportunity to set up your data model,
-   * run jobs, or perform some special logic.
-   */
-  bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {},
+
+  bootstrap( { strapi }: { strapi: Core.Strapi } ) {
+    strapi.log.info(`[APP] Destination domain: ${strapi.config.get("app.domain")}`);
+    strapi.log.info(`[APP] Application: ${strapi.config.get("app.name")}, version: ${strapi.config.get("app.version")}`);
+    strapi.log.info(`[APP] Database Engine: ${strapi.config.get("database.connection.client")}`);
+  },
 };
